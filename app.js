@@ -1,6 +1,7 @@
 var express = require('express');
 
-var nano = require('nano')('http://localhost:5984');
+var dbUrl = process.env.DATABASE_URL || 'http://localhost:5984'
+var nano = require('nano')(dbUrl);
 var alps = nano.use('alps');
 
 var posts = require('./posts');
