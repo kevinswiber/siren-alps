@@ -1,0 +1,12 @@
+{
+  "name": "siren-alps",
+  "version": "0.0.0",
+  "description": "An ALPS implementation in Siren.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Kevin Swiber <kswiber@gmail.com>",
+  "license": "MIT/X11"
+}
