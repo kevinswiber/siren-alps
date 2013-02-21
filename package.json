@@ -8,5 +8,9 @@
   },
   "repository": "",
   "author": "Kevin Swiber <kswiber@gmail.com>",
-  "license": "MIT/X11"
+  "license": "MIT/X11",
+  "engines": {
+    "node": ">= 0.8.x",
+    "npm": ">= 1.2.x"
+  }
 }
