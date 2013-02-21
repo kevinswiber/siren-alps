@@ -1,4 +1,4 @@
-var nano = require('nano')('http://localhost:5984');
+var nano = require('nano')(process.env.DATABASE_URL || 'http://localhost:5984');
 var alps = nano.use('alps');
 var helpers = require('./helpers');
 var buildUri = helpers.buildUri;
