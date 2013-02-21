@@ -1,5 +1,5 @@
 exports.buildUri = function(path) {
-  var baseUri = 'http://localhost:3000';
+  var baseUri = process.env.BASE_URI || 'http://localhost:3000';
   return baseUri + path;
 };
 
