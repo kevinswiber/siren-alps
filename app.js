@@ -11,8 +11,6 @@ var buildUri = helpers.buildUri;
 
 var app = express();
 
-app.use(express.bodyParser());
-
 app.get('/', function(req, res) {
   var home = {
     entities: [
@@ -43,8 +41,11 @@ app.get('/', function(req, res) {
   };
   
   body = JSON.stringify(home);
-  res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length':  body.length });
-  res.end(body);
+  res.status(200);
+  res.header('Access-Control-Allow-Origin', '*');
+  res.type('application/vnd.siren+json');
+  //res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length':  body.length });
+  res.send(body);
 });
 
 app.get('/messages', function(req, res) {
@@ -56,8 +57,9 @@ app.get('/messages', function(req, res) {
     }
 
     var body = JSON.stringify(docs);
-    res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length':  body.length });
-    res.end(body);
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 
 });
@@ -71,8 +73,10 @@ app.get('/messages/:messageId', function(req, res) {
     }
 
     var body = JSON.stringify(docs);
-    res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length': body.length });
-    res.end(body);
+
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 });
 
@@ -98,9 +102,9 @@ app.post('/messages', function(req, res) {
     };
 
     var body = JSON.stringify(response);
-    res.writeHead(201, { 'Content-Type': 'application/vnd.siren+json', 
-      'Content-Length':  body.length, 'Location': location });
-    res.end(body);
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 });
 
@@ -155,8 +159,9 @@ app.get('/users', function(req, res) {
     });
 
     var body = JSON.stringify(users);
-    res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length': body.length });
-    res.end(body);
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 });
 
@@ -194,8 +199,9 @@ app.get('/users/:userId', function(req, res) {
     ];
 
     var body = JSON.stringify(user);
-    res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length': body.length });
-    res.end(body);
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 });
 
@@ -210,9 +216,13 @@ app.get('/user-messages/:userId', function(req, res) {
     }
 
     var body = JSON.stringify(docs);
-    res.writeHead(200, { 'Content-Type': 'application/vnd.siren+json', 'Content-Length': body.length });
-    res.end(body);
+    res.type('application/vnd.siren+json');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.send(body);
   });
 });
+
+app.use(express.bodyParser());
+app.use(app.router);
 
 app.listen(process.env.PORT || 3000);
