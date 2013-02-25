@@ -1,0 +1,385 @@
+HOST: http://siren-alps.herokuapp.com
+
+--- ALPS Microblog API in Siren ---
+---
+This is a Siren example implementationof the ALPS spec.
+---
+
+--
+Home
+This is the home resource.
+--
+
+GET /
+< 200
+< Content-Type: application/vnd.siren+json
+{
+  "entities": [
+    {
+      "href": "...",
+      "rel": [
+        "messages-all"
+      ]
+    },
+    {
+      "href": "...",
+      "rel": [
+        "users-all"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "message-post",
+      "href": "...",
+      "method": "POST",
+      "fields": [
+        {
+          "name": "message",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "user-add",
+      "href": "...",
+      "method": "POST",
+      "fields": [
+        {
+          "name": "user",
+          "type": "text"
+        },
+        {
+          "name": "email",
+          "type": "text"
+        },
+        {
+          "name": "password",
+          "type": "password"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": [
+        "self",
+        "index"
+      ],
+      "href": "..."
+    }
+  ]
+}
+
+--
+Messages
+This is the messages resource.
+--
+GET /messages
+< 200
+< Content-Type: application/vnd.siren+json
+{
+  "class": [
+    "all",
+    "messages"
+  ],
+  "entities": [
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "lee",
+        "message-text": "just getting started",
+        "date-time": "2011-06-20"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/lee",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e34900c3d9",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "mary",
+        "message-text": "ta-da!",
+        "date-time": "2011-06-25"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/mary",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e34900d3a3",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "mamund",
+        "message-text": "My first message!",
+        "date-time": "2011-06-29"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/mamund",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e34900cdb9",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "mamund",
+        "message-text": "another one!",
+        "date-time": "2011-06-30"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/mamund",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e34900d371",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "benjamin",
+        "message-text": "getting into this whole micro-blogging thing...at last",
+        "date-time": "2011-07-21"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/benjamin",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/7803fdcc7a9245db504d625e3d005b9a",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "[anonymous]",
+        "message-text": "Yohoho!",
+        "date-time": "2012-12-31T16:30:26Z"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/%5Banonymous%5D",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e349014844",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "[anonymous]",
+        "message-text": "Hello!",
+        "date-time": "2013-01-02T14:42:22Z"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/%5Banonymous%5D",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e3490157f0",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "[anonymous]",
+        "message-text": "Hello!",
+        "date-time": "2013-01-02T14:42:35Z"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/%5Banonymous%5D",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e349015f82",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "[anonymous]",
+        "message-text": "Hello!",
+        "date-time": "2013-01-02T14:42:59Z"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/%5Banonymous%5D",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e3490162eb",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    },
+    {
+      "class": [
+        "message"
+      ],
+      "properties": {
+        "user-text": "[anonymous]",
+        "message-text": "Howdy do!",
+        "date-time": "2013-01-02T15:07:05Z"
+      },
+      "entities": [
+        {
+          "href": "http://siren-alps.herokuapp.com/users/%5Banonymous%5D",
+          "rel": [
+            "user"
+          ]
+        },
+        {
+          "href": "http://siren-alps.herokuapp.com/messages/aae76e1a2415d5abe11750e349016e03",
+          "rel": [
+            "message"
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "message-post",
+      "href": "http://siren-alps.herokuapp.com/messages",
+      "method": "POST",
+      "fields": [
+        {
+          "name": "message",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "rel": [
+        "self",
+        "messages-all"
+      ],
+      "href": "http://siren-alps.herokuapp.com/messages"
+    },
+    {
+      "rel": [
+        "index"
+      ],
+      "href": "http://siren-alps.herokuapp.com/"
+    }
+  ]
+}
+
+--
+Shopping Cart Resources
+The following is a section of resources related to the shopping cart
+--
+
+List products added into your shopping-cart. (comment block again in Markdown)
+GET /shopping-cart
+< 200
+< Content-Type: application/json
+{ "items": [
+{ "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
+] }
+
+Save new products in your shopping cart
+POST /shopping-cart
+> Content-Type: application/json
+{ "product":"1AB23ORM", "quantity": 2 }
+< 201
+< Content-Type: application/json
+{ "status": "created", "url": "/shopping-cart/2" }
+
+-- Payment Resources --
+
+This resource allows you to submit payment information to process your *shopping cart* items
+POST /payment
+{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
+< 200
+{ "receipt": "/payment/receipt/1" }
